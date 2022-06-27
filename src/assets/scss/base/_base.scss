@@ -1,0 +1,19 @@
+html,
+body {
+  width: 100%;
+  overflow: hidden;
+  background-color: #ccc;
+  color: #fff;
+}
+
+body {
+  height: 100vh;
+  background-color: #f4f4f4;
+  color: #555;
+  font-family: Microsoft JhengHei;
+  overflow: hidden;
+}
+
+router-outlet+*>* {
+  height: 100%;
+}

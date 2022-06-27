@@ -1,5 +1,11 @@
-<h1>TRAVEL DOT TAIPEI</h1>
-<nav>
-  <button (click)="navigateTo('home')">HOME</button><button (click)="navigateTo('favorite')">FAVORITE</button>
-</nav>
-<router-outlet></router-outlet>
+<header class="header">
+  <h1 class="title">TRAVEL.TAIPEI</h1>
+  <nav class="nav">
+    <button class="btn" (click)="navigateTo('home')">HOME</button>
+    <button class="btn" (click)="navigateTo('favorite')">FAVORITE</button>
+  </nav>
+</header>
+
+<main>
+  <router-outlet></router-outlet>
+</main>

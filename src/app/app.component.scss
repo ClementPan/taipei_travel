@@ -1,0 +1,29 @@
+@import 'src/assets/scss/helpers/_app-variables';
+
+.header {
+  height: 72px;
+  background-color: $grey;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 700;
+  color: $white;
+}
+
+.nav {
+  width: 200px;
+
+  display: flex;
+  justify-content: space-between;
+
+  .btn {
+    height: 36px;
+    padding: 4px 12px;
+  }
+}
