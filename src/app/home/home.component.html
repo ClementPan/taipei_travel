@@ -8,7 +8,7 @@
       <div class="category-dropdowns">
         <div class="dropdown-container">
           <label class="label" for="category">Category</label>
-          <select name="category" id="category" class="dropdown" (change)="getAllByCatId($event)">
+          <select name="category" id="category" class="dropdown" (change)="selectHandler($event)">
             <option value="">-</option>
             <ng-container *ngFor="let option of category?.Category">
               <option [value]="option.id">{{option.name}}</option>
@@ -17,7 +17,7 @@
         </div>
         <div class="dropdown-container">
           <label class="label" for="friendly">Friendly</label>
-          <select name="friendly" id="friendly" class="dropdown" (change)="getAllByCatId($event)">
+          <select name="friendly" id="friendly" class="dropdown" (change)="selectHandler($event)">
             <option value="">-</option>
             <ng-container *ngFor="let option of category?.Friendly">
               <option [value]="option.id">{{option.name}}</option>
@@ -26,7 +26,7 @@
         </div>
         <div class="dropdown-container">
           <label class="label" for="services">Services</label>
-          <select name="services" id="services" class="dropdown" (change)="getAllByCatId($event)">
+          <select name="services" id="services" class="dropdown" (change)="selectHandler($event)">
             <option value="">-</option>
             <ng-container *ngFor="let option of category?.Services">
               <option [value]="option.id">{{option.name}}</option>
@@ -35,7 +35,7 @@
         </div>
         <div class="dropdown-container">
           <label class="label" for="target">Target</label>
-          <select name="target" id="target" class="dropdown" (change)="getAllByCatId($event)">
+          <select name="target" id="target" class="dropdown" (change)="selectHandler($event)">
             <option value="">-</option>
             <ng-container *ngFor="let option of category?.Target">
               <option [value]="option.id">{{option.name}}</option>

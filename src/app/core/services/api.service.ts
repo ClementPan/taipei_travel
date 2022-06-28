@@ -32,9 +32,9 @@ export class ApiService {
     return this.http.get<GetAllCategory>(url)
   }
 
-  getAllByCategory(catId: string): Observable<GetAllResponse> {
+  getAllByCategory(catId: string, page: number = 1): Observable<GetAllResponse> {
     const allAttractions = '/Attractions/All'
-    const url = this.baseUrl + this.lang + allAttractions + `?categoryIds=${catId}`
+    let url = this.baseUrl + this.lang + allAttractions + '?' + `page=${page}` + "&" + `categoryIds=${catId}`
     return this.http.get<GetAllResponse>(url)
   }
 }
