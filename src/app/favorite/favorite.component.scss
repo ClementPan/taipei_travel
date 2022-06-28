@@ -1,8 +1,10 @@
+@import 'src/assets/scss/helpers/_app-variables';
+
 .favorite {
   padding: 24px;
 
   .panel {
-    background-color: #fff;
+    background-color: $white;
     display: flex;
     justify-content: space-between;
     padding: 24px;
@@ -14,9 +16,57 @@
         margin: 4px;
       }
     }
+
+    .multiple-delete {
+      .btn {
+        margin-left: 12px;
+      }
+    }
   }
 
   .item-container {
     margin-top: 24px;
+
+    .multiple-delete-container {
+      position: relative;
+
+      .delete-radio {
+        position: absolute;
+        left: 12px;
+        top: 12px;
+
+        .select-delete {
+          background-color: $white;
+          padding: 12px;
+          color: $black;
+          font-size: 36px;
+          border-radius: 12px;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+
+        .unchecked {
+          display: block;
+        }
+
+        .checked {
+          display: none;
+        }
+
+        .select-delete-input {
+          display: none;
+
+          &:checked~.unchecked {
+            display: none;
+          }
+
+          &:checked~.checked {
+            display: block;
+          }
+        }
+      }
+    }
   }
 }

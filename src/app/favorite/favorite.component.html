@@ -5,11 +5,23 @@
         <h2 class="info-msg">我的最愛: {{favoriteList.length}} 筆</h2>
       </div>
       <div class="multiple-delete">
+        <button *ngIf="!isMultipleDeleting; else deleting" class="btn" (click)="showDeleteBtn()">刪除多筆</button>
+        <ng-template #deleting>
+          <button class="btn" (click)="deleteMultiple()">刪除</button>
+          <button class="btn" (click)="restoreMultipleDeleteState()">取消</button>
+        </ng-template>
 
       </div>
     </div>
     <div class="item-container" *ngFor="let item of favoriteList">
-      <app-spot-item (likeToggle)="likeToggle($event)" [item]="item" [liked]="true"></app-spot-item>
+      <div class="multiple-delete-container">
+        <div *ngIf="isMultipleDeleting" class="delete-radio">
+          <input [id]="item.id" type="checkbox" class="select-delete-input">
+          <label [for]="item.id" class="select-delete unchecked">&#9744;</label>
+          <label [for]="item.id" class="select-delete checked">&#9746;</label>
+        </div>
+        <app-spot-item (likeToggle)="likeToggle($event)" [item]="item" [liked]="true"></app-spot-item>
+      </div>
     </div>
   </div>
 </div>
