@@ -1,0 +1,22 @@
+.favorite {
+  padding: 24px;
+
+  .panel {
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 24px;
+
+    .data-info {
+      font-size: 24px;
+
+      .info-msg {
+        margin: 4px;
+      }
+    }
+  }
+
+  .item-container {
+    margin-top: 24px;
+  }
+}

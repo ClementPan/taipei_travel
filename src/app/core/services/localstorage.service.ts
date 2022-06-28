@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class LocalstorageService {
   localStorageKey = 'fav-spots'
-  store: SpotItem[] = []
+  private store: SpotItem[] = []
 
   constructor() { }
 
