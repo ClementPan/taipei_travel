@@ -1,2 +1,18 @@
-<p>home works!</p>
-<pre>{{ apiData | json }}</pre>
+<div class="home">
+  <div class="content">
+    <div class="panel">
+      <div class="data-info">
+        <h2 class="info-msg">資料總數: {{dataCount}} 筆</h2>
+      </div>
+
+      <div class="page-controller">
+        <button [disabled]="currentPage === 1" class="btn" (click)="getLastData()">上一頁</button>
+        <span>{{currentPage}}</span>
+        <button [disabled]="currentPageCount < 30" class="btn" (click)="getNextData()">下一頁</button>
+      </div>
+    </div>
+    <div class="item-container" *ngFor="let item of spotData">
+      <app-spot-item [item]="item"></app-spot-item>
+    </div>
+  </div>
+</div>

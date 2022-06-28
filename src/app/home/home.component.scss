@@ -1,0 +1,31 @@
+.home {
+  padding: 24px;
+
+  .panel {
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 24px;
+
+    .data-info {
+      font-size: 24px;
+
+      .info-msg {
+        margin: 4px;
+      }
+    }
+
+    .page-controller {
+      display: flex;
+      align-items: center;
+
+      .btn {
+        margin: 0 12px;
+      }
+    }
+  }
+
+  .item-container {
+    margin-top: 24px;
+  }
+}
