@@ -25,8 +25,8 @@ export class LocalstorageService {
     this.setLocalStorage(this.store)
   }
 
-  removeFavorite(itemId: number) {
-    this.store = this.store.filter((item: SpotItem) => item.id !== itemId)
+  removeFavorite(itemIds: number[]) {
+    this.store = this.store.filter((item: SpotItem) => !itemIds.includes(item.id))
     this.setLocalStorage(this.store)
   }
 

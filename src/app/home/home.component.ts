@@ -107,7 +107,7 @@ export class HomeComponent implements OnInit {
     if (isFavorite) {
       this.storageService.addFavorite(item)
     } else {
-      this.storageService.removeFavorite(item.id)
+      this.storageService.removeFavorite([item.id])
     }
   }
 
