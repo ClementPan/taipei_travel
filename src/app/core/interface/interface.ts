@@ -51,11 +51,14 @@ interface Service {
   name: string
 }
 
-interface CategoryId {
-  13: '歷史建築',
-  15: '藝文館所',
-  16: '戶外踏青',
-  19: '親子共遊'
-  25: '無障礙旅遊推薦景點',
+export interface GetAllCategory {
+  total: number,
+  data: CategoryData
+}
 
+export interface CategoryData {
+  Category: Category[],
+  Friendly: Category[],
+  Services: Category[],
+  Target: Category[]
 }
