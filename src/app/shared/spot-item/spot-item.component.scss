@@ -1,6 +1,7 @@
 @import 'src/assets/scss/helpers/app-variables';
 
 .item {
+  position: relative;
   background-color: $white;
   margin-bottom: 24px;
   width: 100%;
@@ -27,16 +28,17 @@
   .info {
     padding: 12px;
     overflow: hidden;
+    flex: 1;
 
     .info-title {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-bottom: 12px;
 
       .item-title-container {
         display: flex;
         align-items: center;
-        margin-bottom: 12px;
 
         .item-title {
           font-size: 24px;
@@ -78,11 +80,28 @@
 
     }
 
-    .intro {
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+    .info-row-edit {
+      display: flex;
+      align-items: flex-start;
+
+      .label {
+        margin-right: 8px;
+      }
     }
 
+    .introduction-textarea {
+      resize: none;
+    }
+
+    .edit-btn-container {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+
+      .btn {
+        margin-left: 12px;
+      }
+    }
   }
+
 }

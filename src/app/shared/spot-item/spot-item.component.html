@@ -1,4 +1,4 @@
-<div class="item">
+<div [id]="'item-' + item.id" class="item">
   <div class="img-container">
     <ng-container *ngIf="item.images.length; else sub">
       <img class="img" [src]="item.images[0]?.src" alt="">
@@ -8,7 +8,7 @@
     </ng-template>
   </div>
   <div class="info">
-    <div class="info-title">
+    <div class="info-title" *ngIf="!isEditing">
       <div class="item-title-container">
         <h3 class="item-title">#{{item.id}} {{item.name}}</h3>
         <div class="favorite">
@@ -23,9 +23,62 @@
         </ng-container>
       </div>
     </div>
-    <p class="text"><span class="label">地址:</span> {{ item.address }}</p>
-    <p class="text"><span class="label">電話:</span> {{ item.tel }}</p>
-    <p class="text"><span class="label">營業時間:</span> {{ item.open_time }}</p>
-    <p class="text"><span class="label">說明:</span> {{ item.introduction }}</p>
+
+    <div *ngIf="!isEditing; else editingContent" class="info-row-container">
+      <p class="text"><span class="label">地址:</span> {{ item.address || '無資料' }}</p>
+      <p class="text"><span class="label">電話:</span> {{ item.tel || '無資料' }}</p>
+      <p class="text"><span class="label">營業時間:</span> {{ item.open_time || '無資料' }}</p>
+      <p class="text"><span class="label">說明:</span> {{ item.introduction || '無資料' }}</p>
+    </div>
+
+    <div class="form">
+      <form [formGroup]="form" (submit)="saveEditedContent()">
+        <ng-template #editingContent>
+          <div class="info-title info-row-edit">
+            <div class="item-title-container">
+              <label for="name" class="text label">
+                <span class="item-title label">名稱: </span>
+              </label>
+              <input id="name" formControlName="name" type="text" maxlength="20">
+            </div>
+          </div>
+          <div class="info-row-edit">
+            <label for="address" class="text label">
+              <span class="label">地址: </span>
+            </label>
+            <input id="address" formControlName="address" type="text" maxlength="30">
+          </div>
+
+          <div class="info-row-edit">
+            <label for="tel" class="text label">
+              <span class="label">電話: </span>
+            </label>
+            <input id="tel" type="tel" formControlName="tel" maxlength="20">
+          </div>
+
+          <div class="info-row-edit">
+            <label for="open_time" class="text label">
+              <span class="label">營業時間: </span>
+            </label>
+            <input id="open_time" type="text" formControlName="open_time" maxlength="30">
+          </div>
+
+          <div class="info-row-edit">
+            <label for="introduction" class="text label">
+              <span class="label">說明: </span>
+            </label>
+            <textarea id="introduction" class="introduction-textarea" type="text" formControlName="introduction"
+              maxlength="500" rows="6" cols="100"></textarea>
+          </div>
+        </ng-template>
+        <div *ngIf="editable" class="edit-btn-container">
+          <button *ngIf="!isEditing; else editing" class="btn edit-btn" (click)="editStateToggle()">編輯</button>
+          <ng-template #editing>
+            <button class="btn" type="submit">儲存</button>
+            <button class="btn" (click)="editStateToggle()">取消</button>
+          </ng-template>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
