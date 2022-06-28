@@ -37,6 +37,19 @@
         font-weight: 900;
         margin-bottom: 12px;
       }
+
+      .category {
+        display: flex;
+        align-items: center;
+
+        .cate-name {
+          padding: 4px 8px;
+          margin: 4px;
+          background-color: $black;
+          color: $white;
+          border-radius: 12px;
+        }
+      }
     }
 
     .text {

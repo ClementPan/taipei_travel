@@ -1,5 +1,4 @@
 <div class="item">
-  <!-- <pre>{{ item | json }}</pre> -->
   <div class="img-container">
     <ng-container *ngIf="item.images[0]?.src; else sub">
       <img class="img" [src]="item.images[0].src" alt="">
@@ -11,7 +10,11 @@
   <div class="info">
     <div class="info-title">
       <h3 class="item-title">#{{item.id}} {{item.name}}</h3>
-      <div class="category">{{item.category | json}}</div>
+      <div class="category">
+        <ng-container *ngFor="let cate of item.category">
+          <p class="cate-name">{{cate.name}}</p>
+        </ng-container>
+      </div>
     </div>
     <p class="text"><span class="label">地址:</span> {{ item.address }}</p>
     <p class="text"><span class="label">電話:</span> {{ item.tel }}</p>

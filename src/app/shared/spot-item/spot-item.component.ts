@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./spot-item.component.scss']
 })
 export class SpotItemComponent implements OnInit {
-  @Input() item: any
+  @Input() item!: SpotItem
 
   constructor() { }
 
