@@ -67,6 +67,8 @@ export class SpotItemComponent implements OnInit {
       this.storageService.patchFavorite(item)
       alert('儲存編輯成功')
     } else {
+      console.log('[[[ form: ', this.form.controls);
+
       alert('儲存編輯失敗')
     }
     this.editStateToggle()
@@ -90,7 +92,7 @@ export class SpotItemComponent implements OnInit {
       ]),
       open_time: new FormControl(this.item.open_time, [
         Validators.required,
-        Validators.maxLength(30)
+        Validators.maxLength(100)
       ]),
       introduction: new FormControl(this.item.introduction, [
         Validators.required,
