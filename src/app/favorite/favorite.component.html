@@ -4,7 +4,7 @@
       <div class="data-info">
         <h2 class="info-msg">我的最愛: {{favoriteList.length}} 筆</h2>
       </div>
-      <div class="multiple-delete">
+      <div class="multiple-delete" *ngIf="favoriteList.length > 0">
         <button *ngIf="!isMultipleDeleting; else deleting" class="btn" (click)="showDeleteBtn()">刪除多筆</button>
         <ng-template #deleting>
           <button class="btn" (click)="deleteMultiple()">刪除</button>
