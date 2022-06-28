@@ -9,8 +9,15 @@
   </div>
   <div class="info">
     <div class="info-title">
-      <h3 class="item-title">#{{item.id}} {{item.name}}</h3>
-      <div class="category">
+      <div class="item-title-container">
+        <h3 class="item-title">#{{item.id}} {{item.name}}</h3>
+        <div class="favorite">
+          <button class="btn" [class]="{'liked': isFavorite}" (click)="toggleFavorite()">{{ isFavorite?
+            'Liked':'Like'}}
+          </button>
+        </div>
+      </div>
+      <div class="tags">
         <ng-container *ngFor="let cate of item.category">
           <p class="cate-name">{{cate.name}}</p>
         </ng-container>

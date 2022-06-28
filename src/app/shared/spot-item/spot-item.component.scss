@@ -31,14 +31,29 @@
     .info-title {
       display: flex;
       justify-content: space-between;
+      align-items: center;
 
-      .item-title {
-        font-size: 24px;
-        font-weight: 900;
+      .item-title-container {
+        display: flex;
+        align-items: center;
         margin-bottom: 12px;
+
+        .item-title {
+          font-size: 24px;
+          font-weight: 900;
+        }
+
+        .favorite {
+          margin-left: 8px;
+
+          .liked {
+            background-color: lightcoral;
+            color: $white;
+          }
+        }
       }
 
-      .category {
+      .tags {
         display: flex;
         align-items: center;
 
@@ -50,6 +65,7 @@
           border-radius: 12px;
         }
       }
+
     }
 
     .text {
