@@ -1,4 +1,4 @@
-@import '../../../assets/scss/helpers/app-variables';
+@import 'src/assets/scss/helpers/app-variables';
 
 .item {
   background-color: $white;
@@ -46,6 +46,13 @@
       .label {
         font-weight: 700;
       }
+
+    }
+
+    .intro {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
 
   }
