@@ -25,12 +25,17 @@ export class LocalstorageService {
     this.setLocalStorage(this.store)
   }
 
-  removeFavorite(itemIds: number[]) {
+  removeFavorite(itemIds: number[]): void {
     this.store = this.store.filter((item: SpotItem) => !itemIds.includes(item.id))
     this.setLocalStorage(this.store)
   }
 
-  private setLocalStorage(data: SpotItem[] | []) {
+  patchFavorite(item: SpotItem): void {
+    this.store = this.store.map(favItem => favItem.id === item.id ? item : favItem)
+    this.setLocalStorage(this.store)
+  }
+
+  private setLocalStorage(data: SpotItem[] | []): void {
     const stringifiedData = JSON.stringify(data)
     localStorage.setItem(this.localStorageKey, stringifiedData)
   }
