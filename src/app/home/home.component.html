@@ -5,6 +5,45 @@
         <h2 class="info-msg">資料總數: {{dataCount}} 筆</h2>
       </div>
 
+      <div class="category-dropdowns">
+        <div class="dropdown-container">
+          <label class="label" for="category">Category</label>
+          <select name="category" id="category" class="dropdown" (change)="getAllByCatId($event)">
+            <option value="">-</option>
+            <ng-container *ngFor="let option of category?.Category">
+              <option [value]="option.id">{{option.name}}</option>
+            </ng-container>
+          </select>
+        </div>
+        <div class="dropdown-container">
+          <label class="label" for="friendly">Friendly</label>
+          <select name="friendly" id="friendly" class="dropdown" (change)="getAllByCatId($event)">
+            <option value="">-</option>
+            <ng-container *ngFor="let option of category?.Friendly">
+              <option [value]="option.id">{{option.name}}</option>
+            </ng-container>
+          </select>
+        </div>
+        <div class="dropdown-container">
+          <label class="label" for="services">Services</label>
+          <select name="services" id="services" class="dropdown" (change)="getAllByCatId($event)">
+            <option value="">-</option>
+            <ng-container *ngFor="let option of category?.Services">
+              <option [value]="option.id">{{option.name}}</option>
+            </ng-container>
+          </select>
+        </div>
+        <div class="dropdown-container">
+          <label class="label" for="target">Target</label>
+          <select name="target" id="target" class="dropdown" (change)="getAllByCatId($event)">
+            <option value="">-</option>
+            <ng-container *ngFor="let option of category?.Target">
+              <option [value]="option.id">{{option.name}}</option>
+            </ng-container>
+          </select>
+        </div>
+      </div>
+
       <div class="page-controller">
         <button [disabled]="currentPage === 1" class="btn" (click)="getLastData()">上一頁</button>
         <span>{{currentPage}}</span>
