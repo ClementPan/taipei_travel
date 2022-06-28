@@ -1,3 +1,4 @@
+import { LocalstorageService } from './../core/services/localstorage.service';
 import { ApiService } from './../core/services/api.service';
 import { Component, OnInit } from '@angular/core';
 import { GetAllResponse, SpotItem, CategoryData } from '../core/interface/interface';
@@ -14,14 +15,17 @@ export class HomeComponent implements OnInit {
   currentPageCount = 0
   category!: CategoryData
   categorySelected: string[] = []
+  storeId: number[] = []
 
   constructor(
+    private storageService: LocalstorageService,
     private apiService: ApiService
   ) { }
 
   ngOnInit(): void {
     this.getAll(this.currentPage)
     this.getType()
+    this.setFavoriteSpotItem()
   }
 
   getAll(pageNum: number): void {
@@ -92,5 +96,34 @@ export class HomeComponent implements OnInit {
 
   getCategoryQueryString() {
     return this.categorySelected.filter(Boolean).join()
+  }
+
+  /**
+   * handler event when app-spot-item emit toggle
+   * @param spotItemState
+   */
+  likeToggle(spotItemState: { item: SpotItem, isFavorite: boolean }): void {
+    const { item, isFavorite } = spotItemState
+    if (isFavorite) {
+      this.storageService.addFavorite(item)
+    } else {
+      this.storageService.removeFavorite(item.id)
+    }
+  }
+
+  /**
+   * get localstorage favorites items and set like flag in view
+   */
+  setFavoriteSpotItem(): void {
+    this.storeId = this.storageService.getAllfavorites().map((item: SpotItem) => item.id)
+  }
+
+  /**
+   * provide template to show Like/Liked button
+   * @param id
+   * @returns
+   */
+  isLiked(id: number): boolean {
+    return this.storeId.includes(id)
   }
 }
