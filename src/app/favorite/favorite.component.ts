@@ -10,6 +10,8 @@ import { LocalstorageService } from '../core/services/localstorage.service';
 export class FavoriteComponent implements OnInit {
   favoriteList: any = []
   isMultipleDeleting = false
+  onEdit = false
+  itemOnEditing!: number
 
   constructor(
     private storageService: LocalstorageService
@@ -60,5 +62,26 @@ export class FavoriteComponent implements OnInit {
     // remove multiple items
     this.favoriteList = this.favoriteList.filter((favItem: SpotItem) => !selectedItems.includes(favItem.id))
     this.restoreMultipleDeleteState()
+  }
+
+  /**
+   * if editing is false, editting is done
+   * if not, store the editting item id
+   * @param editing
+   */
+  onEditHangler(editing: number | false) {
+    this.onEdit = true
+    if (editing) {
+      this.itemOnEditing = editing
+    } else {
+      this.getFavoriteSpotItem()
+    }
+  }
+
+  getEditable(itemId: number): boolean {
+    if (!this.onEdit) {
+      return true
+    }
+    return this.itemOnEditing === itemId
   }
 }

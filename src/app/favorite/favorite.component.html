@@ -20,7 +20,9 @@
           <label [for]="item.id" class="select-delete unchecked">&#9744;</label>
           <label [for]="item.id" class="select-delete checked">&#9746;</label>
         </div>
-        <app-spot-item (likeToggle)="likeToggle($event)" [item]="item" [liked]="true"></app-spot-item>
+        <app-spot-item [class]="'item-'+item.id" (onEdit)="onEditHangler($event)" (likeToggle)="likeToggle($event)"
+          [item]="item" [liked]="true" [editable]="getEditable(item.id)">
+        </app-spot-item>
       </div>
     </div>
   </div>
