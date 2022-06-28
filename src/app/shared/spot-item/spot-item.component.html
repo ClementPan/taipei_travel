@@ -1,0 +1,21 @@
+<div class="item">
+  <!-- <pre>{{ item | json }}</pre> -->
+  <div class="img-container">
+    <ng-container *ngIf="item.images[0]?.src; else sub">
+      <img class="img" [src]="item.images[0].src" alt="">
+    </ng-container>
+    <ng-template #sub>
+      <p class="img">No Image</p>
+    </ng-template>
+  </div>
+  <div class="info">
+    <div class="info-title">
+      <h3 class="item-title">{{item.name}}</h3>
+      <div class="category">{{item.category | json}}</div>
+    </div>
+    <p class="text"><span class="label">地址:</span> {{ item.address }}</p>
+    <p class="text"><span class="label">電話:</span> {{ item.tel }}</p>
+    <p class="text"><span class="label">營業時間:</span> {{ item.open_time }}</p>
+    <p class="text"><span class="label">說明:</span> {{ item.introduction }}</p>
+  </div>
+</div>

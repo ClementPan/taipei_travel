@@ -1,0 +1,52 @@
+@import '../../../assets/scss/helpers/app-variables';
+
+.item {
+  background-color: $white;
+  margin-bottom: 24px;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  border-radius: 12px;
+  overflow: hidden;
+
+  .img-container {
+    min-width: 400px;
+    width: 400px;
+    height: 100%;
+
+    .img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .info {
+    padding: 12px;
+    overflow: hidden;
+
+    .info-title {
+      display: flex;
+      justify-content: space-between;
+
+      .item-title {
+        font-size: 24px;
+        font-weight: 900;
+        margin-bottom: 12px;
+      }
+    }
+
+    .text {
+      font-size: 16px;
+      margin-bottom: 4px;
+
+      .label {
+        font-weight: 700;
+      }
+    }
+
+  }
+}
