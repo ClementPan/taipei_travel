@@ -3,18 +3,31 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
+  HttpErrorResponse
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators'
+import { LoaderService } from './loader.service';
 
 @Injectable()
 export class HttpsInterceptor implements HttpInterceptor {
 
-  constructor() { }
+  constructor(
+    private loaderSrv: LoaderService
+  ) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    console.log('[[[ HttpsInterceptor');
+    console.log('[[[ HttpsInterceptor-req: ', request);
+    this.loaderSrv.onHttpRequest.next(true)
 
-    return next.handle(request);
+    return next.handle(request).pipe(
+      tap(() => this.loaderSrv.onHttpRequest.next(false)),
+      catchError((error: HttpErrorResponse) => {
+        alert(error)
+        this.loaderSrv.onHttpRequest.next(false)
+        return throwError(error)
+      }),
+    )
   }
 }

@@ -9,3 +9,7 @@
 <main class="main">
   <router-outlet></router-outlet>
 </main>
+
+<ng-container *ngIf="showLoader">
+  <app-loader></app-loader>
+</ng-container>
